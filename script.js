@@ -29,6 +29,14 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// Membuat format mata uang rupiah
+const rupiah = (number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0, //Jumlah angka dibelakang koma hilang
+  }).format(number);
+};
 // product
 let products = {
   items: [
