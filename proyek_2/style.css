@@ -1,0 +1,41 @@
+* {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+body {
+  font-family: "Fredoka", sans-serif;
+  background-color: #ffffff;
+}
+.container {
+    margin: auto;
+  transition: 0.5s;
+  width: 900px;
+  max-width: 90vw;
+}
+.container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  cursor: pointer;
+  height: 80px;
+}
+.container header .book-shop{
+    position: relative;
+}
+.container header .book-shop .quantity {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0 7px;
+    position: absolute;
+    top: -13px;
+    left: 15px;
+}
