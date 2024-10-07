@@ -6,7 +6,7 @@ document.querySelector("#menu-bar").onclick = (e) => {
   e.preventDefault(); //Buat aksi default tidak dilakukan
 };
 
-// //Membuat ketika menu-bar yang sudah diklik user klik luar sidebar maka sidebar hilang
+//Membuat ketika menu-bar yang sudah diklik user klik luar sidebar maka sidebar hilang
 const sideMenu = document.querySelector("#menu-bar");
 document.addEventListener("click", function (e) {
   if (!sideMenu.contains(e.target) && !menuBar.contains(e.target)) {
@@ -21,12 +21,21 @@ document.querySelector("#shopping-cart-button").onclick = (e) => {
   shoppingCart.classList.toggle("active");
   e.preventDefault();
 };
-//Membuat ketika shopping-cart yang sudah diklik user klik luar sidebar maka sidebar hilang
+
+// Membuat ketika shopping - cart yang sudah diklik user, lalu user klik produk diluar shooping card tetep mmuncul.
+
 const sideCart = document.querySelector("#shopping-cart-button");
 document.addEventListener("click", function (e) {
   if (!sideCart.contains(e.target) && !shoppingCart.contains(e.target)) {
-    shoppingCart.classList.remove("active");
+    if (!e.target.closest(".add-to-cart")) {
+      shoppingCart.classList.remove("active");
+    }
   }
+});
+
+// Mencegah keranjang tertutup saat berinteraksi di dalam keranjang
+shoppingCart.addEventListener("click", (e) => {
+  e.stopPropagation(); // Mencegah event bubbling ke atas
 });
 
 // Membuat format mata uang rupiah
@@ -83,7 +92,7 @@ let cart = [];
 
 // Fungsi untuk memperbarui tampilan keranjang
 function updateCart() {
-  cartContainer.innerHTML = ""; // Hapus isi keranjang sebelumnya
+  cartContainer.innerHTML = ""; // Kosongkan keranjang
   let totalPriceBeforeDiscount = 0;
   let totalDiscount = 0;
   let totalPriceAfterDiscount = 0;
@@ -235,23 +244,4 @@ productContainer.addEventListener("click", (e) => {
     const product = products.items.find((item) => item.id === productId);
     addToCart(product);
   }
-});
-
-// Memberi toggle ketika shopping-cart klik akan muncul
-document.querySelector("#shopping-cart-button").onclick = (e) => {
-  shoppingCart.classList.toggle("active");
-  e.preventDefault();
-};
-
-// Membuat ketika user klik luar sidebar, keranjang tertutup
-document.addEventListener("click", function (e) {
-  const sideCart = document.querySelector("#shopping-cart-button");
-  if (!sideCart.contains(e.target) && !shoppingCart.contains(e.target)) {
-    shoppingCart.classList.remove("active");
-  }
-});
-
-// Mencegah keranjang tertutup saat berinteraksi di dalam keranjang
-shoppingCart.addEventListener("click", (e) => {
-  e.stopPropagation(); // Mencegah event bubbling ke atas
 });
