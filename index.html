@@ -43,30 +43,14 @@
       <!-- Shopping Cart -->
 
       <div class="shopping-cart">
-        <div class="cart-item">
+        <!-- <div class="cart-item">
           <img src="/images/book_1.jpg" alt="Atomic Habits" />
           <div class="detail-item">
             <h3>Atomic Habits</h3>
             <div class="item-price">IDR 75000</div>
           </div>
           <i data-feather="trash-2" class="delete-item"></i>
-        </div>
-        <div class="cart-item">
-          <img src="/images/book_1.jpg" alt="Atomic Habits" />
-          <div class="detail-item">
-            <h3>Atomic Habits</h3>
-            <div class="item-price">IDR 75000</div>
-          </div>
-          <i data-feather="trash-2" class="delete-item"></i>
-        </div>
-        <div class="cart-item">
-          <img src="/images/book_1.jpg" alt="Atomic Habits" />
-          <div class="detail-item">
-            <h3>Atomic Habits</h3>
-            <div class="item-price">IDR 75000</div>
-          </div>
-          <i data-feather="trash-2" class="delete-item"></i>
-        </div>
+        </div> -->
       </div>
 
       <!-- Shopping Cart End -->
@@ -112,7 +96,7 @@
     <!-- Product Section End -->
 
     <!-- Modal Box Detail Item -->
-
+<!-- Membuat item ketika diklik akan muncul diskripsi -->
     <!-- Untuk membuat transparan background ketika buka modal -->
     <!-- <div class="modal-item" id="modal-item">
       <div class="modal-container">
@@ -144,38 +128,6 @@
     <!-- Modal Box Detail Item End -->
 
     <script src="script.js"></script>
-    <script>
-      //Mencari container dari product
-      const productContainer = document.querySelector(".row");
-
-      // Looping products
-      products.items.forEach((product) => {
-        const productHTML = `
-      <div class="product-card">
-        <div class="product-icons">
-          <a href="#"><i data-feather="shopping-cart"></i></a>
-        </div>
-        <div class="product-image">
-          <img src="${product.img}" alt="${product.name}"/>
-        </div>
-        <div class="product-content">
-          <h3>${product.name}</h3>
-          <div class="product-stars">
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-          </div>
-          <div class="product-price">${rupiah(
-            product.price * product.discount
-          )} <span>${rupiah(product.price)}</span></div>
-        </div>
-      </div>
-    `;
-        productContainer.innerHTML += productHTML;
-      });
-      feather.replace();
-    </script>
+    <script></script>
   </body>
 </html>
