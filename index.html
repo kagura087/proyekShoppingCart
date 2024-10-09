@@ -11,6 +11,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
       rel="stylesheet" />
+    <!-- Menambah favicon -->
+    <link rel="icon" href="/images/iconbook.png" />
     <!-- Menambahkan icon dari Feather Icon -->
   </head>
   <body>
@@ -38,6 +40,7 @@
         <a href="#" id="menu-bar" class="navbar-item"
           ><i data-feather="menu"></i
         ></a>
+        <!-- Membuat tombol menu bar untuk media query -->
       </div>
 
       <!-- Shopping Cart -->
@@ -61,7 +64,8 @@
     <section class="hero" id="home">
       <main class="content">
         <h1 class="hero-title">pustaka<span>Rindu</span></h1>
-        <p>Sepatu yang terbuat dari bahan kulit asli.</p>
+        <p>Diam bukan berarti tidak memperhatikanmu,</p>
+        <p>Halo Kami Pustaka Rindu yang siap menerangi duniamu.</p>
         <a href="#products" class="btn">Shop Now</a>
       </main>
     </section>
@@ -96,7 +100,7 @@
     <!-- Product Section End -->
 
     <!-- Modal Box Detail Item -->
-<!-- Membuat item ketika diklik akan muncul diskripsi -->
+    <!-- Membuat item ketika diklik akan muncul diskripsi -->
     <!-- Untuk membuat transparan background ketika buka modal -->
     <!-- <div class="modal-item" id="modal-item">
       <div class="modal-container">
@@ -127,7 +131,15 @@
     </div> -->
     <!-- Modal Box Detail Item End -->
 
-    <script src="script.js"></script>
-    <script></script>
+    <script src="script.js">
+          const cartSummaryHTML = `
+        <div class="cart-summary">
+          <p>Total harga (sebelum diskon): ${rupiah(totalPriceBeforeDiscount)}</p>
+          <p>Total diskon: ${rupiah(totalDiscount)}</p>
+          <p>Total harga (setelah diskon): ${rupiah(totalPriceAfterDiscount)}</p>
+        </div>
+      `;
+      cartContainer.innerHTML += cartSummaryHTML;
+    </script>
   </body>
 </html>
