@@ -46,6 +46,34 @@ const rupiah = (number) => {
     minimumFractionDigits: 0, //Jumlah angka dibelakang koma hilang
   }).format(number);
 };
+
+// Mengambil data keranjang dari Local Storage
+function loadCartFromLocalStorage() {
+  const savedCart = localStorage.getItem("shoppingCart");
+  if (savedCart) {
+    cart = JSON.parse(savedCart); // Mengubah kembali ke objek
+    updateCart(); // Memperbarui tampilan keranjang
+  }
+}
+
+// Menyimpan data keranjang ke Local Storage
+function saveCartToLocalStorage() {
+  localStorage.setItem("shoppingCart", JSON.stringify(cart));
+}
+
+// Menyimpan buku yang dilihat di Session Storage
+function saveViewedBookToSession(book) {
+  sessionStorage.setItem("viewedBook", JSON.stringify(book));
+}
+
+// Memuat buku yang dilihat dari Session Storage
+function loadViewedBookFromSession() {
+  const viewedBook = sessionStorage.getItem("viewedBook");
+  if (viewedBook) {
+    console.log("Buku terakhir yang dilihat:", JSON.parse(viewedBook));
+  }
+}
+
 // product
 let products = {
   items: [
@@ -72,7 +100,7 @@ let products = {
     },
     {
       id: 4,
-      name: "Chicken Soup",
+      name: "Chicken Soup For The Soul",
       img: "/images/chickenSoup.jpg",
       price: 119000,
       discount: 65 / 100,
@@ -86,37 +114,37 @@ let products = {
     },
     {
       id: 6,
-      name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
-      price: 80000,
-      discount: 75 / 100,
+      name: "Dunia Sophie",
+      img: "/images/DuniaSophie.jpg",
+      price: 169000,
+      discount: 85 / 100,
     },
     {
       id: 7,
-      name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
-      price: 80000,
-      discount: 75 / 100,
+      name: "Educated",
+      img: "/images/Educated.jpg",
+      price: 126000,
+      discount: 95 / 100,
     },
     {
       id: 8,
-      name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
-      price: 80000,
-      discount: 75 / 100,
+      name: "How To Win Friends And Influence People",
+      img: "/images/HowToWin.jpg",
+      price: 98000,
+      discount: 80 / 100,
     },
     {
       id: 9,
-      name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
-      price: 80000,
+      name: "The Black Swan",
+      img: "/images/AngsaHitam.jpg",
+      price: 103000,
       discount: 75 / 100,
     },
     {
       id: 10,
-      name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
-      price: 80000,
+      name: "Principles 80/20",
+      img: "/images/principle8020.jpg",
+      price: 298000,
       discount: 75 / 100,
     },
   ],
@@ -170,6 +198,7 @@ function updateCart() {
   cartContainer.innerHTML += cartSummaryHTML;
 
   feather.replace(); // Render ulang Feather Icons
+  saveCartToLocalStorage(); // Simpan keranjang ke Local Storage
 
   // Menambahkan event listener ke tombol hapus dan kontrol quantity
   document.querySelectorAll(".delete-item").forEach((btn) => {
@@ -278,5 +307,14 @@ productContainer.addEventListener("click", (e) => {
     );
     const product = products.items.find((item) => item.id === productId);
     addToCart(product);
+
+    // Simpan produk yang dilihat di Session Storage
+    saveViewedBookToSession(product);
   }
+});
+
+// Memuat data saat halaman pertama kali dibuka
+document.addEventListener("DOMContentLoaded", () => {
+  loadCartFromLocalStorage(); // Muat keranjang dari Local Storage
+  loadViewedBookFromSession(); // Muat buku yang terakhir dilihat dari Session Storage
 });

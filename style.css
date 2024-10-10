@@ -108,6 +108,7 @@ body {
   /* display: flex;
   align-items: center; */
   font-size: 1.5rem;
+  background-color: rgba(202, 244, 255, 1);
 }
 
 .shopping-cart .cart-item .delete-item {
@@ -128,9 +129,7 @@ body {
   font-weight: normal;
   padding-bottom: 0.7rem;
 }
-.shopping-cart .cart-item .delete-item {
-  cursor: pointer;
-}
+
 .shopping-cart .cart-item .delete-item:hover {
   color: rgb(90, 178, 255);
 }
@@ -142,7 +141,6 @@ body {
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan untuk pemisahan visual */
   z-index: 1000; /* Pastikan elemen ini tetap di atas elemen lain */
 }
-
 
 /* Modal Box Detail Item */
 
@@ -172,8 +170,6 @@ body {
 
   .navbar .navbar-menu {
     position: absolute;
-    /* background-color: rgba(255, 249, 249, 0.816); */
-    /* background-color: rgba(202, 244, 255, 1); */
     background-color: rgb(255, 249, 208);
     top: 100%;
     right: -100%; /*Membuat elemen bar keluar layar*/
@@ -216,7 +212,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
 }
-.hero::after {
+/* .hero::after {
   content: "";
   display: block;
   width: 100%;
@@ -228,7 +224,7 @@ body {
     rgba(255, 249, 208, 1) 5%,
     rgba(255, 255, 255, 0) 50%
   );
-}
+} */
 
 .hero .content h1 {
   font-size: 4rem;
@@ -299,8 +295,6 @@ body {
   padding: 1rem;
 }
 .products .row .product-card .product-image {
-  /* width: 400px; */
-  /* height: 25rem; */
   position: relative;
   overflow: hidden;
   border-radius: 10px;
