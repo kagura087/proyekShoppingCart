@@ -9,6 +9,7 @@ document.querySelector("#menu-bar").onclick = (e) => {
 //Membuat ketika menu-bar yang sudah diklik user klik luar sidebar maka sidebar hilang
 const sideMenu = document.querySelector("#menu-bar");
 document.addEventListener("click", function (e) {
+  //Jika klik terjadi diluar target menu-bar dan sidebar menghapus class active
   if (!sideMenu.contains(e.target) && !menuBar.contains(e.target)) {
     menuBar.classList.remove("active");
   }
@@ -22,7 +23,7 @@ document.querySelector("#shopping-cart-button").onclick = (e) => {
   e.preventDefault();
 };
 
-// Membuat ketika shopping - cart yang sudah diklik user, lalu user klik produk diluar shooping card tetep mmuncul.
+// Membuat ketika shopping - cart yang sudah diklik user, lalu user klik produk diluar shooping card tetep muncul.
 
 const sideCart = document.querySelector("#shopping-cart-button");
 document.addEventListener("click", function (e) {
@@ -59,6 +60,7 @@ function loadCartFromLocalStorage() {
 // Menyimpan data keranjang ke Local Storage
 function saveCartToLocalStorage() {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  // saat kita menyimpan objek JavaScript ke Local Storage, objek itu diubah menjadi string terlebih dahulu dengan menggunakan JSON.stringify()
 }
 
 // Menyimpan buku yang dilihat di Session Storage
@@ -80,70 +82,70 @@ let products = {
     {
       id: 1,
       name: "The Alchemist",
-      img: "/images/theAlchemist.jpg",
+      img: "images/theAlchemist.jpg",
       price: 216000,
       discount: 80 / 100,
     },
     {
       id: 2,
       name: "Rich Dad Poor Dad",
-      img: "/images/Richdad.jpg",
+      img: "images/Richdad.jpg",
       price: 60000,
       discount: 90 / 100, // discount = 100 -discount = 100 - 90 = 10%
     },
     {
       id: 3,
       name: "I Want Die But I Want To Eat Tteokbokki",
-      img: "/images/iWantDie.jpg",
+      img: "images/iWantDie.jpg",
       price: 150000,
       discount: 70 / 100,
     },
     {
       id: 4,
       name: "Chicken Soup For The Soul",
-      img: "/images/chickenSoup.jpg",
+      img: "images/chickenSoup.jpg",
       price: 119000,
       discount: 65 / 100,
     },
     {
       id: 5,
       name: "Start With Why",
-      img: "/images/startWithWhy.jpg",
+      img: "images/startWithWhy.jpg",
       price: 80000,
       discount: 75 / 100,
     },
     {
       id: 6,
       name: "Dunia Sophie",
-      img: "/images/DuniaSophie.jpg",
+      img: "images/DuniaSophie.jpg",
       price: 169000,
       discount: 85 / 100,
     },
     {
       id: 7,
       name: "Educated",
-      img: "/images/Educated.jpg",
+      img: "images/Educated.jpg",
       price: 126000,
       discount: 95 / 100,
     },
     {
       id: 8,
       name: "How To Win Friends And Influence People",
-      img: "/images/HowToWin.jpg",
+      img: "images/HowToWin.jpg",
       price: 98000,
       discount: 80 / 100,
     },
     {
       id: 9,
       name: "The Black Swan",
-      img: "/images/AngsaHitam.jpg",
+      img: "images/AngsaHitam.jpg",
       price: 103000,
       discount: 75 / 100,
     },
     {
       id: 10,
       name: "Principles 80/20",
-      img: "/images/principle8020.jpg",
+      img: "images/principle8020.jpg",
       price: 298000,
       discount: 75 / 100,
     },
@@ -161,12 +163,17 @@ function updateCart() {
   let totalPriceAfterDiscount = 0;
 
   cart.forEach((item) => {
+    // Menghitung harga setelah diskon
     const discountedPrice = item.price * item.discount;
-    const itemDiscount = item.price - discountedPrice;
+    // Menghitung jumlah diskon
+    const jmlDiscount = item.price - discountedPrice;
 
     // Update total harga dan diskon
+    // total harga sebelum diskon
     totalPriceBeforeDiscount += item.price * item.quantity;
-    totalDiscount += itemDiscount * item.quantity;
+    // total diskon
+    totalDiscount += jmlDiscount * item.quantity;
+    // total harga setelah diskon
     totalPriceAfterDiscount += discountedPrice * item.quantity;
 
     const cartItemHTML = `
@@ -201,6 +208,7 @@ function updateCart() {
   saveCartToLocalStorage(); // Simpan keranjang ke Local Storage
 
   // Menambahkan event listener ke tombol hapus dan kontrol quantity
+  // Event listener untuk tombol hapus
   document.querySelectorAll(".delete-item").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const id = parseInt(e.target.getAttribute("data-id"));
@@ -208,6 +216,7 @@ function updateCart() {
     });
   });
 
+  // Event listener untuk tombol kontrol quantity
   document.querySelectorAll(".increase-quantity").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const id = parseInt(e.target.getAttribute("data-id"));
@@ -215,6 +224,7 @@ function updateCart() {
     });
   });
 
+  // Event listener untuk tombol kontrol quantity
   document.querySelectorAll(".decrease-quantity").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const id = parseInt(e.target.getAttribute("data-id"));
@@ -225,6 +235,7 @@ function updateCart() {
 
 // Fungsi untuk menambahkan produk ke keranjang
 function addToCart(product) {
+  // Cek apakah produk sudah ada di keranjang
   const existingItem = cart.find((item) => item.id === product.id);
 
   if (!existingItem) {
@@ -238,6 +249,7 @@ function addToCart(product) {
 
 // Fungsi untuk menghapus produk dari keranjang
 function removeFromCart(productId) {
+  // Filter produk yang tidak dihapus
   cart = cart.filter((item) => item.id !== productId);
   updateCart();
 }

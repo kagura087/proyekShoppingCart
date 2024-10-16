@@ -136,7 +136,12 @@ body {
 .shopping-cart .cart-summary {
   position: sticky;
   bottom: 0;
-  background-color: rgba(202, 244, 255, 1); /* Sesuaikan sesuai dengan desain Anda */
+  background-color: rgba(
+    202,
+    244,
+    255,
+    1
+  ); /* Sesuaikan sesuai dengan desain Anda */
   padding: 10px;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan untuk pemisahan visual */
   z-index: 1000; /* Pastikan elemen ini tetap di atas elemen lain */
@@ -335,7 +340,7 @@ body {
   justify-content: center;
   align-items: center;
   transform: translateY(-5px);
-  /* transform:rotate(180deg); */
+  /* transform: rotate(180deg); */
 }
 
 /* Memberi warna pada icon shopping cart ketika hover */
@@ -343,5 +348,6 @@ body {
   background-color: #529ffa;
   color: rgb(255, 255, 255);
   border: 1px solid #529ffa;
-  transition: 0.1s;
+  transition: 0.10s;
+  /* transform: rotate(0deg); */
 }
