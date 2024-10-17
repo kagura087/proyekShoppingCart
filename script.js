@@ -24,7 +24,6 @@ document.querySelector("#shopping-cart-button").onclick = (e) => {
 };
 
 // Membuat ketika shopping - cart yang sudah diklik user, lalu user klik produk diluar shooping card tetep muncul.
-
 const sideCart = document.querySelector("#shopping-cart-button");
 document.addEventListener("click", function (e) {
   if (!sideCart.contains(e.target) && !shoppingCart.contains(e.target)) {
